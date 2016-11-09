@@ -1,0 +1,138 @@
+//
+//  ViewController.swift
+//  ONTHEMAP
+//
+//  Created by Delberto Martinez on 03/11/16.
+//  Copyright © 2016 Delberto Martinez. All rights reserved.
+//
+
+import UIKit
+import MapKit
+class MapViewController: UIViewController, MKMapViewDelegate {
+
+    @IBOutlet weak var MapView: MKMapView!
+    
+    var appDelegate: AppDelegate!
+    var annotations = [MKPointAnnotation]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        self.studentsLocations()
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+        
+        let request = NSMutableURLRequest(url: NSURL(string: "\(Constants.Parse.ParseURL)?\(Constants.ParseParameterKeys.Limit)=\(Constants.ParseResponseKeys.Limit)")! as URL)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            guard (error == nil) else {
+                print("Hubo un error con la petición \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                print("La petición regresó un status code diferente a 2xx")
+                return
+            }
+            
+            guard let data = data else {
+                print("No se devolvieron datos de la petición")
+                return
+            }
+            let parsedResult: [String:AnyObject]!
+            do{
+                parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String : AnyObject]
+            }catch{
+                print("No se pudieron analizar los datos como JSON '\(data)'")
+                return
+            }
+            
+            if let _ = parsedResult[Constants.ParseResponseKeys.StatusCode] as? Int {
+                print("Parse a devuelto un error véase en '\(Constants.ParseResponseKeys.StatusCode)' y '\(Constants.ParseResponseKeys.StatusMessage)' in \(parsedResult)")
+                return
+            }
+            guard let results = parsedResult[Constants.ParseResponseKeys.Results] as? [[String: AnyObject]] else {
+                print("No se pudieron encontrar los resultados '\(Constants.ParseResponseKeys.Results)' en \(parsedResult)")
+                
+                return
+            }
+            Constants.Locations.studentsLocations = results
+            print(Constants.Locations.studentsLocations)
+           
+}
+        task.resume()
+        
+       }
+    
+
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor.cgColor
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+        }else{
+            pinView!.annotation = annotation
+        }
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                app.openURL(URL(string: toOpen)!)
+                }
+            
+            }
+
+        }
+    
+    func studentsLocations() {
+        
+        let locations = Constants.Locations.studentsLocations        
+        
+        for dictionary in locations! {
+            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
+            let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
+            
+            let coordinate = CLLocationCoordinate2DMake(lat, lon)
+            let first = dictionary["firstName"] as! String
+            let last = dictionary["lastName"] as! String
+            let mediaURL = dictionary["mediaURL"] as! String
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(first) \(last)"
+            
+            
+            annotations.append(annotation)
+        
+        }
+        self.MapView.addAnnotations(annotations)
+        }
+        
+    }
+
+
+
+
+
+
+
+
+
