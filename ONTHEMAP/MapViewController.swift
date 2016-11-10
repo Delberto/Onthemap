@@ -64,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 return
             }
-            Constants.Locations.studentsLocations = results
+            Constants.Locations.studentsLocations? = results
             print(Constants.Locations.studentsLocations)
            
 }
@@ -104,9 +104,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func studentsLocations() {
         
-        let locations = Constants.Locations.studentsLocations        
+        let locations = Constants.Locations.studentsLocations!
         
-        for dictionary in locations! {
+        for dictionary in locations {
             let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
             let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
             
@@ -121,11 +121,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             
             annotations.append(annotation)
-        
         }
         self.MapView.addAnnotations(annotations)
-        }
-        
+
+      
+                        }
+    
     }
 
 

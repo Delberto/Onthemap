@@ -18,7 +18,7 @@ struct Constants {
         
     }
     struct ParseResponseKeys {
-        static let Limit = "100"
+        static let Limit = "2"
         static let Skip = "400"
         static let Results = "results"
         static let StatusCode = "status_code"
@@ -30,12 +30,40 @@ struct Constants {
        
     }
     
-    struct StudentInfo {
-        
-    }
+
     struct ParseResponseValues {
         static let OKStatus = "ok"
     }
     
 }
 
+struct studentInformation
+{
+    let name: String
+    let location: String
+    let mediaURL: String
+    
+    init(dictionary: [String : AnyObject])
+    {
+        let firstName = dictionary["firstName"] as! String
+        let lastName = dictionary["lastName"] as! String
+        self.name = "\(firstName) \(lastName)"
+        self.location = dictionary["mapString"] as! String
+        self.mediaURL = dictionary["mediaURL"] as! String
+    }
+}
+
+extension studentInformation
+{
+    static var studentInformations: [studentInformation] {
+        
+        var studentArray: [studentInformation] = []
+        
+        for dic in Constants.Locations.studentsLocations {
+            
+            studentArray.append(studentInformation(dictionary: dic))
+        }
+        
+        return studentArray
+    }
+}
