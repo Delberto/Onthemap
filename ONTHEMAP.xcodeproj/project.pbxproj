@@ -103,7 +103,6 @@
 			children = (
 				6BAE71511DCC415B00840198 /* AppDelegate.swift */,
 				6BC4BE6A1DD4E0D1001C4B9C /* Model */,
-				6BD4C0EA1DD3CB4400369A94 /* GrandCentralDispatch.swift */,
 				6BE6F9921DCD5E600006FCAC /* ViewControllers */,
 				6BE6F9931DCD5FE00006FCAC /* Assets */,
 				6BAE71581DCC415B00840198 /* Assets.xcassets */,
@@ -135,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				6BAE717F1DCC421D00840198 /* Constants .swift */,
+				6BD4C0EA1DD3CB4400369A94 /* GrandCentralDispatch.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
