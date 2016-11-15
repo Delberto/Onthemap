@@ -1,11 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="CkH-lQ-LOE">
+            <objects>
+                <viewController id="rBZ-NJ-vfr" customClass="LoginViewController" customModule="ONTHEMAP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="URB-re-6Vb"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hb0-ui-CWL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fbr-92-cyb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="d8T-j5-6Aw">
+                                <rect key="frame" x="16" y="199" width="336" height="63"/>
+                                <color key="tintColor" red="0.16145038411056101" green="1" blue="0.91419686322140603" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EDW-1X-fvc" userLabel="User Name Text Field">
+                                <rect key="frame" x="19" y="298" width="336" height="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k2l-Zc-lHV" userLabel="Password Text Field ">
+                                <rect key="frame" x="19" y="380" width="336" height="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7S-su-Brm">
+                                <rect key="frame" x="19" y="426" width="336" height="66"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxl-9S-tdA" userLabel="Debug Text Label">
+                                <rect key="frame" x="19" y="500" width="336" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m7S-su-Brm" firstAttribute="top" secondItem="k2l-Zc-lHV" secondAttribute="bottom" constant="20" id="92u-qa-Ctf"/>
+                            <constraint firstItem="Hb0-ui-CWL" firstAttribute="top" secondItem="k2l-Zc-lHV" secondAttribute="bottom" constant="261" id="IFy-WX-mk1"/>
+                            <constraint firstItem="Hb0-ui-CWL" firstAttribute="top" secondItem="d8T-j5-6Aw" secondAttribute="bottom" constant="405" id="MdE-Bm-WXA"/>
+                            <constraint firstItem="EDW-1X-fvc" firstAttribute="trailing" secondItem="k2l-Zc-lHV" secondAttribute="trailing" id="NIR-Vs-XiK"/>
+                            <constraint firstItem="m7S-su-Brm" firstAttribute="leading" secondItem="k2l-Zc-lHV" secondAttribute="leading" id="VdA-d1-zeG"/>
+                            <constraint firstItem="k2l-Zc-lHV" firstAttribute="top" secondItem="EDW-1X-fvc" secondAttribute="bottom" constant="56" id="Wnn-Si-wcZ"/>
+                            <constraint firstAttribute="trailing" secondItem="d8T-j5-6Aw" secondAttribute="trailing" constant="23" id="ZPj-zB-48Y"/>
+                            <constraint firstItem="Hb0-ui-CWL" firstAttribute="top" secondItem="m7S-su-Brm" secondAttribute="bottom" constant="175" id="ZRM-9n-93j"/>
+                            <constraint firstItem="EDW-1X-fvc" firstAttribute="leading" secondItem="k2l-Zc-lHV" secondAttribute="leading" id="ini-mn-2yK"/>
+                            <constraint firstItem="k2l-Zc-lHV" firstAttribute="leading" secondItem="d8T-j5-6Aw" secondAttribute="leading" constant="3" id="lGv-QC-6aO"/>
+                            <constraint firstItem="d8T-j5-6Aw" firstAttribute="leading" secondItem="Fbr-92-cyb" secondAttribute="leading" constant="16" id="oWX-iG-Gfw"/>
+                            <constraint firstItem="d8T-j5-6Aw" firstAttribute="top" secondItem="URB-re-6Vb" secondAttribute="bottom" constant="179" id="uIR-DO-EPE"/>
+                            <constraint firstItem="k2l-Zc-lHV" firstAttribute="trailing" secondItem="d8T-j5-6Aw" secondAttribute="trailing" constant="3" id="xav-3A-16V"/>
+                            <constraint firstItem="m7S-su-Brm" firstAttribute="trailing" secondItem="k2l-Zc-lHV" secondAttribute="trailing" id="z5x-aX-Oys"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DebugTextLabel" destination="Xxl-9S-tdA" id="7SH-dz-uen"/>
+                        <outlet property="LoginButton" destination="m7S-su-Brm" id="Yas-Z7-jPK"/>
+                        <outlet property="PasswordTextField" destination="k2l-Zc-lHV" id="S5i-tW-IOw"/>
+                        <outlet property="UserNameTextField" destination="EDW-1X-fvc" id="Zky-0B-1fF"/>
+                        <outlet property="debugTextLabel" destination="Xxl-9S-tdA" id="toD-b5-ZTV"/>
+                        <outlet property="loginButton" destination="m7S-su-Brm" id="T0o-8Y-SMQ"/>
+                        <outlet property="passwordTextField" destination="k2l-Zc-lHV" id="KEB-jJ-70R"/>
+                        <outlet property="userNameTextField" destination="EDW-1X-fvc" id="oIk-an-Q1H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKx-tL-7N8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-319.19999999999999" y="402.54872563718146"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -15,18 +93,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a7s-OU-jkW">
-                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                                <rect key="frame" x="-4" y="0.0" width="383" height="667"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a7s-OU-jkW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="6QM-NV-5s3"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a7s-OU-jkW" secondAttribute="bottom" id="BUD-Pz-Wpb"/>
-                            <constraint firstItem="a7s-OU-jkW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="BsP-Wm-xLN"/>
+                            <constraint firstItem="a7s-OU-jkW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="BsP-Wm-xLN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="a7s-OU-jkW" secondAttribute="trailing" constant="-20" id="Z9k-Nr-mGw"/>
                         </constraints>
                     </view>
@@ -36,7 +114,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407" y="394"/>
+            <point key="canvasLocation" x="405.60000000000002" y="393.55322338830587"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="UdacityLogo" width="537" height="94"/>
+    </resources>
 </document>

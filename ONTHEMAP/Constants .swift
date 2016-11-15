@@ -6,6 +6,7 @@
 //  Copyright © 2016 Delberto Martinez. All rights reserved.
 //
 import UIKit
+import Foundation
 
 struct Constants {
     
@@ -14,15 +15,16 @@ struct Constants {
     }
     struct ParseParameterKeys {
         static let Limit = "limit"
-        static let Skip = "Skip"
+        static let Order = "order"
         
     }
     struct ParseResponseKeys {
-        static let Limit = "2"
+        static let Limit = "20"
         static let Skip = "400"
         static let Results = "results"
         static let StatusCode = "status_code"
         static let StatusMessage = "status_message"
+        static let Order = "-updatedAt"
     }
     struct Locations {
         
@@ -39,17 +41,17 @@ struct Constants {
 
 struct studentInformation
 {
-    let name: String
-    let location: String
-    let mediaURL: String
+    let name: AnyObject?
+    let location: AnyObject?
+    let mediaURL: AnyObject?
     
     init(dictionary: [String : AnyObject])
     {
         let firstName = dictionary["firstName"] as! String
         let lastName = dictionary["lastName"] as! String
-        self.name = "\(firstName) \(lastName)"
-        self.location = dictionary["mapString"] as! String
-        self.mediaURL = dictionary["mediaURL"] as! String
+        self.name = "\(firstName) \(lastName)" as AnyObject?
+        self.location = dictionary["mapString"] as AnyObject?
+        self.mediaURL = dictionary["mediaURL"] as AnyObject?
     }
 }
 
