@@ -12,20 +12,24 @@ struct Constants {
     
     struct Parse {
         static let ParseURL = "https://parse.udacity.com/parse/classes/StudentLocation"
+        
     }
+    static let Udacity = "https://www.udacity.com/api/session"
+    
     struct ParseParameterKeys {
         static let Limit = "limit"
         static let Order = "order"
         
     }
     struct ParseResponseKeys {
-        static let Limit = "100"
+        static let Limit = "50"
         static let Skip = "400"
         static let Results = "results"
         static let StatusCode = "status_code"
         static let StatusMessage = "status_message"
         static let Order = "-updatedAt"
     }
+    
     struct Locations {
         
         static var studentsLocations: [[String:AnyObject]]!
