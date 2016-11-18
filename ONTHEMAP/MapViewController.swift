@@ -36,6 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            
+          
             guard (error == nil) else {
                 print("Hubo un error con la petición \(error)")
                 return
@@ -72,11 +74,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
 // Constants.Locations.studentsLocation now is stored in results. Now results is stored in complete info and now contains data
             self.completeInfo = results
+            
+//Here we updated the map view to populate the map with pins
             performUIUpdatesOnMain {
                 self.studentsLocations()
             }
          
            }
+//complete the task.
         task.resume()
     
     }
