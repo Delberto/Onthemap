@@ -118,10 +118,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func studentsLocations()  {
         let locations = completeInfo
-        
+       
         for dictionary in locations {
-        let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-        let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
+     
+            let lat = CLLocationDegrees (dictionary["latitude"] as! Double)
+            guard (lat == nil) else {
+                print("The parse server returned other value \(lat)")
+                return
+            }
+
+         let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
+            guard (lon == nil) else {
+                print("The parse server returned other value \(lon)")
+                return
+            }
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         let first = dictionary["firstName"] as AnyObject
         let last = dictionary["lastName"] as AnyObject
