@@ -18,9 +18,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var completeInfo = [[String:AnyObject]]()
         override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.studentsLocations()
-      
+            
+            self.studentsLocations()
+            
         appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     }
@@ -117,26 +117,34 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     
     func studentsLocations()  {
+        
         let locations = completeInfo
-       
+        
         for dictionary in locations {
-     
-            let lat = CLLocationDegrees (dictionary["latitude"] as! Double)
-            guard (lat == nil) else {
-                print("The parse server returned other value \(lat)")
+            
+            func getLatitude(lati: AnyObject, longi: AnyObject)  {
+                
+                if  let lat: CLLocationDegrees = dictionary["latitude"] as? Double {
+                var latitu = lati
+                    latitu = lat as AnyObject
+                }else {
+                    print("Other value \(lati)")
+                    return
+                }
+                
+            if let lon: CLLocationDegrees = dictionary["latitude"] as? Double {
+                var longitu = longi
+                longitu = lon as AnyObject
+            }else{
+                print("other value \(longi)")
                 return
-            }
-
-         let lon = CLLocationDegrees(dictionary["longitude"] as! Double)
-            guard (lon == nil) else {
-                print("The parse server returned other value \(lon)")
-                return
-            }
-        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                }
+        
+        let coordinate = CLLocationCoordinate2D(latitude: lati as! CLLocationDegrees, longitude: longi as! CLLocationDegrees)
         let first = dictionary["firstName"] as AnyObject
         let last = dictionary["lastName"] as AnyObject
         let mediaURL = dictionary["mediaURL"] as AnyObject
-            
+        
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.coordinate = coordinate
@@ -147,14 +155,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
                 MapView.delegate = self
                 self.MapView.addAnnotations(self.annotations)
-        
-            }
             
         }
+    
+
+}
      
-        
 
 
+}
     
 
 
