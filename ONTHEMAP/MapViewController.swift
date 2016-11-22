@@ -122,28 +122,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         for dictionary in locations {
             
-            func getLatitude(lati: AnyObject, longi: AnyObject)  {
+            guard let lat: CLLocationDegrees = dictionary["latitude"] as? Double else  {
+                print("Other value")
                 
-                if  let lat: CLLocationDegrees = dictionary["latitude"] as? Double {
-                var latitu = lati
-                    latitu = lat as AnyObject
-                }else {
-                    print("Other value \(lati)")
-                    return
-                }
+//Continue is for tell the bucle to keep going even if the value doesn't exist or is another type.
+                continue
                 
-            if let lon: CLLocationDegrees = dictionary["latitude"] as? Double {
-                var longitu = longi
-                longitu = lon as AnyObject
-            }else{
-                print("other value \(longi)")
                 return
-                }
+             }
+           
         
-        let coordinate = CLLocationCoordinate2D(latitude: lati as! CLLocationDegrees, longitude: longi as! CLLocationDegrees)
+        
+            guard let lon: CLLocationDegrees = dictionary["longitude"] as? Double else{
+              print("Other value")
+//Continue is for tell the bucle to keep going even if the value doesn't exist or is another type.
+                continue
+                
+                return
+            }
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         let first = dictionary["firstName"] as AnyObject
         let last = dictionary["lastName"] as AnyObject
         let mediaURL = dictionary["mediaURL"] as AnyObject
+            
         
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
@@ -156,15 +157,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 MapView.delegate = self
                 self.MapView.addAnnotations(self.annotations)
             
-        }
+    }
     
 
 }
-     
 
 
-}
-    
+
+
+
 
 
 
