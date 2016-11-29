@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B4A7F411DDA399C005C14FB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A7F401DDA399C005C14FB /* LoginViewController.swift */; };
+		6B4D0C841DEDF1B7009352BC /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D0C831DEDF1B7009352BC /* TableViewController.swift */; };
 		6BAE71521DCC415B00840198 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE71511DCC415B00840198 /* AppDelegate.swift */; };
 		6BAE71541DCC415B00840198 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE71531DCC415B00840198 /* MapViewController.swift */; };
 		6BAE71571DCC415B00840198 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BAE71551DCC415B00840198 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		6B4A7F401DDA399C005C14FB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6B4D0C831DEDF1B7009352BC /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		6BAE714E1DCC415B00840198 /* ONTHEMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ONTHEMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BAE71511DCC415B00840198 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BAE71531DCC415B00840198 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -143,8 +145,9 @@
 		6BE6F9921DCD5E600006FCAC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6BAE71531DCC415B00840198 /* MapViewController.swift */,
 				6B4A7F401DDA399C005C14FB /* LoginViewController.swift */,
+				6BAE71531DCC415B00840198 /* MapViewController.swift */,
+				6B4D0C831DEDF1B7009352BC /* TableViewController.swift */,
 				6BAE717F1DCC421D00840198 /* Constants .swift */,
 			);
 			name = Controller;
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BAE71541DCC415B00840198 /* MapViewController.swift in Sources */,
+				6B4D0C841DEDF1B7009352BC /* TableViewController.swift in Sources */,
 				6BD4C0EB1DD3CB4400369A94 /* GrandCentralDispatch.swift in Sources */,
 				6BAE71801DCC421D00840198 /* Constants .swift in Sources */,
 				6B4A7F411DDA399C005C14FB /* LoginViewController.swift in Sources */,
