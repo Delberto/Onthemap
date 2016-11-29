@@ -12,13 +12,14 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var MapView: MKMapView!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     var appDelegate: AppDelegate!
     var annotations = [MKPointAnnotation]()
     var completeInfo = [[String:AnyObject]]()
         override func viewDidLoad() {
         super.viewDidLoad()
-            
+//Calling studentsLocations in viewDidLoad, after the data was retrieved by the request.
             self.studentsLocations()
             
         appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -30,7 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+//Making the request to the Parse server
         let request = NSMutableURLRequest(url: NSURL(string: "\(Constants.Parse.ParseURL)?\(Constants.ParseParameterKeys.Limit)=\(Constants.ParseResponseKeys.Limit)")! as URL)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
@@ -69,13 +70,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 
                 return
             }
+//Store Constans.Locations.studentsLocations in "results"
             Constants.Locations.studentsLocations = results
             print(Constants.Locations.studentsLocations)
+      
             
 // Constants.Locations.studentsLocation now is stored in results. Now results is stored in complete info and now contains data
             self.completeInfo = results
             
-//Here we updated the map view to populate the map with pins
+//Here we updated the map view to populate the map with pins calling the studentsLocations() method.
             performUIUpdatesOnMain {
                 self.studentsLocations()
             }
@@ -87,6 +90,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
  
+    @IBAction func logout(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
   
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -104,6 +110,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       
         }
     
+    @IBAction func logoutButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
     
 
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,calloutAccessoryControlTapped control: UIControl) {
@@ -115,7 +124,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             }
         }
-    
+//This function updates the mapView
     func studentsLocations()  {
         
         let locations = completeInfo
@@ -123,23 +132,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         for dictionary in locations {
             
             guard let lat: CLLocationDegrees = dictionary["latitude"] as? Double else  {
-                print("Other value")
-                
 //Continue is for tell the bucle to keep going even if the value doesn't exist or is another type.
                 continue
-                
                 return
              }
            
-        
-        
             guard let lon: CLLocationDegrees = dictionary["longitude"] as? Double else{
-              print("Other value")
 //Continue is for tell the bucle to keep going even if the value doesn't exist or is another type.
                 continue
-                
                 return
             }
+            
         let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         let first = dictionary["firstName"] as AnyObject
         let last = dictionary["lastName"] as AnyObject

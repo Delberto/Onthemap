@@ -22,7 +22,7 @@ struct Constants {
         
     }
     struct ParseResponseKeys {
-        static let Limit = "50"
+        static let Limit = "100"
         static let Skip = "400"
         static let Results = "results"
         static let StatusCode = "status_code"
