@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
             getRequesToken()
         }
     }
+    
     private func completeLogin(){
         performUIUpdatesOnMain {
             self.DebugTextLabel.text = ""

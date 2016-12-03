@@ -17,6 +17,7 @@
 		6BAE71671DCC415B00840198 /* ONTHEMAPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE71661DCC415B00840198 /* ONTHEMAPTests.swift */; };
 		6BAE71721DCC415B00840198 /* ONTHEMAPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE71711DCC415B00840198 /* ONTHEMAPUITests.swift */; };
 		6BAE71801DCC421D00840198 /* Constants .swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE717F1DCC421D00840198 /* Constants .swift */; };
+		6BC95E4C1DEFA359003956F3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC95E4B1DEFA359003956F3 /* MapKit.framework */; };
 		6BD4C0EB1DD3CB4400369A94 /* GrandCentralDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4C0EA1DD3CB4400369A94 /* GrandCentralDispatch.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		6BAE71711DCC415B00840198 /* ONTHEMAPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ONTHEMAPUITests.swift; sourceTree = "<group>"; };
 		6BAE71731DCC415B00840198 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BAE717F1DCC421D00840198 /* Constants .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants .swift"; sourceTree = "<group>"; };
+		6BC95E4B1DEFA359003956F3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6BD4C0EA1DD3CB4400369A94 /* GrandCentralDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrandCentralDispatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC95E4C1DEFA359003956F3 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +92,7 @@
 				6BAE71651DCC415B00840198 /* ONTHEMAPTests */,
 				6BAE71701DCC415B00840198 /* ONTHEMAPUITests */,
 				6BAE714F1DCC415B00840198 /* Products */,
+				6BC95E4A1DEFA359003956F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +144,14 @@
 				6BD4C0EA1DD3CB4400369A94 /* GrandCentralDispatch.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		6BC95E4A1DEFA359003956F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BC95E4B1DEFA359003956F3 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6BE6F9921DCD5E600006FCAC /* Controller */ = {
@@ -231,6 +243,11 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = WJK63CQVQK;
 						LastSwiftMigration = 0810;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					6BAE71611DCC415B00840198 = {
 						CreatedOnToolsVersion = 7.3.1;
